@@ -34,7 +34,7 @@ import MetalKit
 
 extension MTLVertexDescriptor {
   static var defaultLayout: MTLVertexDescriptor? {
-    MTKMetalVertexDescriptorFromModelIO(.defaultLayout)
+    MTKMetalVertexDescriptorFromModelIO(MDLVertexDescriptor.defaultLayout)
   }
 }
 

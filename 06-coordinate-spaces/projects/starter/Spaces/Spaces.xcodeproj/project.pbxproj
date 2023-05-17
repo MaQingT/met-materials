@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2127D61C2A153670001DBD49 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127D61B2A153670001DBD49 /* Transform.swift */; };
+		2127D61D2A153670001DBD49 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2127D61B2A153670001DBD49 /* Transform.swift */; };
 		823D8B1C26B12E8600D2A25A /* SpacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D8B0E26B12E8500D2A25A /* SpacesApp.swift */; };
 		823D8B1D26B12E8600D2A25A /* SpacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D8B0E26B12E8500D2A25A /* SpacesApp.swift */; };
 		823D8B1E26B12E8600D2A25A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823D8B0F26B12E8500D2A25A /* ContentView.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2127D61A2A152EDF001DBD49 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		2127D61B2A153670001DBD49 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		823D8B0E26B12E8500D2A25A /* SpacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesApp.swift; sourceTree = "<group>"; };
 		823D8B0F26B12E8500D2A25A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		823D8B1026B12E8600D2A25A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				823D8B3D26B1307400D2A25A /* Models */,
 				823D8B2D26B12F0700D2A25A /* SwiftUI Views */,
 				823D8B1026B12E8600D2A25A /* Assets.xcassets */,
+				2127D61A2A152EDF001DBD49 /* Common.h */,
+				2127D61B2A153670001DBD49 /* Transform.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 				823D8B2F26B12F1200D2A25A /* Renderer.swift in Sources */,
 				823D8B2B26B12EF800D2A25A /* MetalView.swift in Sources */,
 				823D8B1E26B12E8600D2A25A /* ContentView.swift in Sources */,
+				2127D61C2A153670001DBD49 /* Transform.swift in Sources */,
 				823D8B1C26B12E8600D2A25A /* SpacesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +290,7 @@
 				823D8B3026B12F1200D2A25A /* Renderer.swift in Sources */,
 				823D8B2C26B12EF800D2A25A /* MetalView.swift in Sources */,
 				823D8B1F26B12E8600D2A25A /* ContentView.swift in Sources */,
+				2127D61D2A153670001DBD49 /* Transform.swift in Sources */,
 				823D8B1D26B12E8600D2A25A /* SpacesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +353,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Shared/Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -398,7 +406,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Shared/Common.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
@@ -428,6 +436,7 @@
 				PRODUCT_NAME = Spaces;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = Shared/Common.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -458,6 +467,7 @@
 				PRODUCT_NAME = Spaces;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = Shared/Common.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
