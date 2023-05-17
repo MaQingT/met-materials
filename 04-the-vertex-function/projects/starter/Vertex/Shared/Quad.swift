@@ -1,15 +1,15 @@
-/// Copyright (c) 2022 Razeware LLC
-///
+/// Copyright (c) 2023 Razeware LLC
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -30,28 +30,61 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-#include <metal_stdlib>
-using namespace metal;
+import MetalKit
+struct Quad{
+    var Oldvertices: [Float] = [
+        -1,1,0,
+         1,-1,0,
+         -1,-1,0,
+         -1,1,0,
+         1,1,0,
+         1,-1,0
+    ]
+    
+    var vertices: [Float] = [
+      -1,  1,  0,
+       1,  1,  0,
+      -1, -1,  0,
+       1, -1,  0
+    ]
+    
+    
+    var colors: [simd_float3] = [
+      [1, 0, 0], // red
+      [0, 1, 0], // green
+      [0, 0, 1], // blue
+      [1, 1, 0]  // yellow
+    ]
 
-
-vertex float4 vertex_main(
-  float4 position [[attribute(0)]] [[stage_in]],
-  constant float &timer [[buffer(11)]])
-{
-  return position;
+    var indices: [UInt16] = [
+      0, 3, 2,
+      0, 1, 3
+    ]
+    
+    let vertexBuffer : MTLBuffer
+    let colorBuffer : MTLBuffer
+    let indexBuffer : MTLBuffer
+    
+    init(device: MTLDevice, scale: Float = 1) {
+        vertices = vertices.map {$0 * scale}
+        guard let vertexBuffer = device.makeBuffer(
+            bytes: &vertices,
+            length: MemoryLayout<Float>.stride * vertices.count,
+            options: []) else {
+            fatalError("Unable to create quad vertex buffer")
+        }
+        self.vertexBuffer = vertexBuffer
+        
+        guard let colorBuffer = device.makeBuffer(bytes: &colors, length: MemoryLayout<simd_float3>.stride * indices.count,options: [])else{
+            fatalError("Unable to create quad color buffer")
+        }
+        self.colorBuffer = colorBuffer
+        
+        guard let indexBuffer = device.makeBuffer(bytes: &indices, length: MemoryLayout<UInt16>.stride * indices.count,options: [])else{
+            fatalError("Unable to create quad index buffer")
+        }
+        self.indexBuffer = indexBuffer
+    }
+    
 }
 
-//vertex float4 vertex_main(
-//  constant packed_float3 *vertices [[buffer(0)]],
-//  constant ushort *indices [[buffer(1)]],
-//  constant float &timer [[buffer(11)]],
-//  uint vertexID [[vertex_id]])
-//{
-//  ushort index = indices[vertexID];
-//  float4 position = float4(vertices[index], 1);
-//  return position;
-//}
-
-fragment float4 fragment_main() {
-    return float4(0, 0, 1, 1);
-}
