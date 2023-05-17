@@ -43,13 +43,12 @@ struct VertexOut {
 
 vertex VertexOut vertex_main(
   VertexIn in [[stage_in]],
-  constant float3 &position [[buffer(11)]])
+  constant float4x4 &matrix [[buffer(11)]])
 {
-  float3 translation = in.position.xyz + position;
-  VertexOut out {
-    .position = float4(translation, 1)
-  };
-  return out;
+    float4 translation = matrix * float4(in.position.xyz,1);
+    VertexOut out;
+    out.position = translation;
+    return out;
 }
 
 fragment float4 fragment_main(
