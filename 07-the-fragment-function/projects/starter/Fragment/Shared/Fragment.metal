@@ -34,11 +34,16 @@
 using namespace metal;
 #import "Common.h"
 
-struct VertexOut {
-  float4 position [[position]];
-};
+#import "ShaderDefs.h"
 
-fragment float4 fragment_main(VertexOut in [[stage_in]])
+//struct VertexOut {
+//  float4 position [[position]];
+//};
+
+fragment float4 fragment_main(VertexOut in [[stage_in]], constant ScreenParam &params [[buffer(12)]])
 {
-  return float4(0.2, 0.5, 1.0, 1);
+    float4 sky = float4(0.34, 0.9, 1.0, 1.0);
+    float4 earth = float4(0.29, 0.58, 0.2, 1.0);
+    float intensity = in.normal.y * 0.5 + 0.5;
+    return mix(earth, sky, intensity);
 }

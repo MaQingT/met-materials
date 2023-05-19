@@ -36,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60314E742A17603800652B57 /* ShaderDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderDefs.h; sourceTree = "<group>"; };
 		820B880526B8E47D0070A134 /* FragmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FragmentApp.swift; sourceTree = "<group>"; };
 		820B880626B8E47D0070A134 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		820B880726B8E47E0070A134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 				822D02B0273656B200296BE0 /* Transform.swift */,
 				820B882C26B8E5290070A134 /* VertexDescriptor.swift */,
 				820B884026B90B770070A134 /* Common.h */,
+				60314E742A17603800652B57 /* ShaderDefs.h */,
 				820B883D26B90B530070A134 /* Vertex.metal */,
 				820B882F26B8E5350070A134 /* Fragment.metal */,
 				820B883626B8E5570070A134 /* Models */,
