@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60C9DDC12A1C947D004BB35D /* SceneLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9DDC02A1C947D004BB35D /* SceneLights.swift */; };
+		60C9DDC22A1C947D004BB35D /* SceneLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9DDC02A1C947D004BB35D /* SceneLights.swift */; };
+		60C9DDC62A1CADA9004BB35D /* Lighting.metal in Sources */ = {isa = PBXBuildFile; fileRef = 60C9DDC52A1CADA9004BB35D /* Lighting.metal */; };
+		60C9DDC72A1CADA9004BB35D /* Lighting.metal in Sources */ = {isa = PBXBuildFile; fileRef = 60C9DDC52A1CADA9004BB35D /* Lighting.metal */; };
 		82044E4726C8BA80008347C1 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82044E4626C8BA80008347C1 /* Options.swift */; };
 		82044E4826C8BA80008347C1 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82044E4626C8BA80008347C1 /* Options.swift */; };
 		820B881326B8E47E0070A134 /* LightingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B880526B8E47D0070A134 /* LightingApp.swift */; };
@@ -62,6 +66,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60C9DDC02A1C947D004BB35D /* SceneLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLights.swift; sourceTree = "<group>"; };
+		60C9DDC42A1CAD3C004BB35D /* Lighting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lighting.h; sourceTree = "<group>"; };
+		60C9DDC52A1CADA9004BB35D /* Lighting.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Lighting.metal; sourceTree = "<group>"; };
 		82044E4626C8BA80008347C1 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		820B880526B8E47D0070A134 /* LightingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightingApp.swift; sourceTree = "<group>"; };
 		820B880626B8E47D0070A134 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +126,7 @@
 				827DDAED2738DE15000E88B4 /* GameScene.swift */,
 				82D9AD802738F23E003E025A /* Camera.swift */,
 				82D9AD8927390D8C003E025A /* PlayerCamera.swift */,
+				60C9DDC02A1C947D004BB35D /* SceneLights.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -158,6 +166,8 @@
 			children = (
 				820B884026B90B770070A134 /* Common.h */,
 				820B883D26B90B530070A134 /* Shaders.metal */,
+				60C9DDC42A1CAD3C004BB35D /* Lighting.h */,
+				60C9DDC52A1CADA9004BB35D /* Lighting.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -289,7 +299,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					820B880B26B8E47E0070A134 = {
 						CreatedOnToolsVersion = 13.0;
@@ -404,6 +414,8 @@
 				82044E4726C8BA80008347C1 /* Options.swift in Sources */,
 				82F19CE52740BECA001C5657 /* DebugLights.metal in Sources */,
 				82D9AD812738F23E003E025A /* Camera.swift in Sources */,
+				60C9DDC62A1CADA9004BB35D /* Lighting.metal in Sources */,
+				60C9DDC12A1C947D004BB35D /* SceneLights.swift in Sources */,
 				82F19CE32740BECA001C5657 /* DebugLights.swift in Sources */,
 				82EDE5E626CCC4BB00DE47E4 /* TextureController.swift in Sources */,
 				827DDAEE2738DE15000E88B4 /* GameScene.swift in Sources */,
@@ -432,6 +444,8 @@
 				82044E4826C8BA80008347C1 /* Options.swift in Sources */,
 				82F19CE62740BECA001C5657 /* DebugLights.metal in Sources */,
 				82D9AD822738F23E003E025A /* Camera.swift in Sources */,
+				60C9DDC72A1CADA9004BB35D /* Lighting.metal in Sources */,
+				60C9DDC22A1C947D004BB35D /* SceneLights.swift in Sources */,
 				82F19CE42740BECA001C5657 /* DebugLights.swift in Sources */,
 				82EDE5E726CCC4BB00DE47E4 /* TextureController.swift in Sources */,
 				827DDAEF2738DE15000E88B4 /* GameScene.swift in Sources */,
@@ -478,6 +492,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -538,6 +553,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -627,6 +643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
@@ -655,6 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
