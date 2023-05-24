@@ -82,7 +82,7 @@ struct SceneLighting {
   init() {
     lights.append(sunlight)
     lights.append(ambientLight)
-    lights.append(redLight)
-    lights.append(spotlight)
+//    lights.append(redLight)
+//    lights.append(spotlight)
   }
 }

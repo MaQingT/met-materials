@@ -44,21 +44,73 @@ float3 phoneLighting(
                          float3 diffuseColor = 0;
                          float3 ambientColor = 0;
                          float3 specularColor = 0;
-                         for(int i=0;i<params.lightCount;i++){
+
+                         float materialShininess = 32;
+                         float3 materialSpecularColor = float3(1, 1, 1);
+                         for(uint i = 0;i < params.lightCount; i++){
                              Light light = lights[i];
                              switch (light.type){
                                  case Sun:{
+                                     float3 lightDirection = normalize(-light.position);
+                                     float diffuseIntensity = saturate(-dot(lightDirection,normal));
+                                     diffuseColor += light.color * baseColor * diffuseIntensity;
+                                     if (diffuseIntensity > 0) {
+                                       // 1 (R)
+                                       float3 reflection =
+                                           reflect(lightDirection, normal);
+                                       // 2 (V)
+                                       float3 viewDirection =
+                                           normalize(params.cameraPosition);
+                                       // 3
+                                       float specularIntensity =
+                                           pow(saturate(dot(reflection, viewDirection)),
+                                               materialShininess);
+                                       specularColor +=
+                                           light.specularColor * materialSpecularColor
+                                             * specularIntensity;
+                                     }
                                      break;
                                  }
                                  case Point:{
+                                     float d = distance(light.position, position);
+                                     float3 lightDirection = normalize(light.position - position);
+                                     float attenuation = 1/(light.attenuation.x + light.attenuation.y * d + light.attenuation.z * d * d);
+                                     float diffuseIntensity = saturate(dot(lightDirection, normal));
+                                     float3 color = light.color * baseColor * diffuseIntensity;
+                                     color *= attenuation;
+                                     diffuseColor += color;
                                      break;
                                  }
                                  case Spot:{
+                                     // 1
+                                     float d = distance(light.position, position);
+                                     float3 lightDirection = normalize(light.position - position);
+                                     // 2
+                                     float3 coneDirection = normalize(light.coneDirection);
+                                     float spotResult = dot(lightDirection, -coneDirection);
+                                     // 3
+                                     if (spotResult > cos(light.coneAngle)) {
+                                       float attenuation = 1.0 / (light.attenuation.x +
+                                           light.attenuation.y * d + light.attenuation.z * d * d);
+                                       // 4
+                                       attenuation *= pow(spotResult, light.coneAttenuation);
+                                       float diffuseIntensity =
+                                                saturate(dot(lightDirection, normal));
+                                       float3 color = light.color * baseColor * diffuseIntensity;
+                                       color *= attenuation;
+                                       diffuseColor += color;
+                                     }
                                      break;
                                  }
                                  case Ambient:{
+                                     ambientColor += light.color;
+                                     break;
+                                 }
+                                 case unused: {
                                      break;
                                  }
                              }
                          }
+                         return diffuseColor + specularColor + ambientColor;
                      }
+
