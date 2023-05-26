@@ -1,4 +1,4 @@
-/// Copyright (c) 2022 Razeware LLC
+/// Copyright (c) 2023 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,64 +30,45 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import GameController
+import MetalKit
 
-class InputController {
-  struct Point {
-    var x: Float
-    var y: Float
-    static let zero = Point(x: 0, y: 0)
-  }
-
-  static let shared = InputController()
-  var keysPressed: Set<GCKeyCode> = []
-  var leftMouseDown = false
-  var mouseDelta = Point.zero
-  var mouseScroll = Point.zero
-  var
-touchLocation: CGPoint?
-  var touchDelta: CGSize? {
-    didSet {
-      touchDelta?.height *= -1
-      if let delta = touchDelta {
-        mouseDelta = Point(x: Float(delta.width), y: Float(delta.height))
-      }
-      leftMouseDown = touchDelta != nil
+struct ObjectIdRenderPass: RenderPass{
+    
+    let label = "Object ID Render Pass"
+    var descriptor: MTLRenderPassDescriptor?
+    var pipelineState: MTLRenderPipelineState
+    var depthStencilState: MTLDepthStencilState?
+    var idTexture: MTLTexture?
+    var depthTexture: MTLTexture?
+    
+    init(){
+        pipelineState = PipelineStates.createObjectIdPSO()
+        descriptor = MTLRenderPassDescriptor()
+        depthStencilState = Self.buildDepthStencilState()
     }
-  }
-
-  private init() {
-    let center = NotificationCenter.default
-    center.addObserver(
-      forName: .GCKeyboardDidConnect,
-      object: nil,
-      queue: nil) { notification in
-        let keyboard = notification.object as? GCKeyboard
-          keyboard?.keyboardInput?.keyChangedHandler
-            = { _, _, keyCode, pressed in
-          if pressed {
-            self.keysPressed.insert(keyCode)
-          } else {
-            self.keysPressed.remove(keyCode)
-          }
-        }
+    
+    mutating func resize(view: MTKView, size: CGSize) {
+        idTexture = Self.makeTexture(size: size, pixelFormat: .r32Uint, label: "ID Texture")
+        depthTexture = Self.makeTexture(size: size, pixelFormat: .depth32Float, label: "ID Depth Texture")
     }
-    center.addObserver(
-      forName: .GCMouseDidConnect,
-      object: nil,
-      queue: nil) { notification in
-        let mouse = notification.object as? GCMouse
-        mouse?.mouseInput?.leftButton.pressedChangedHandler = { _, _, pressed in
-          self.leftMouseDown = pressed
+    
+    func draw(commandBuffer: MTLCommandBuffer, scene: GameScene, uniforms: Uniforms, params: Params) {
+        guard let descriptor = descriptor else {
+            return
         }
-        mouse?.mouseInput?.scroll.valueChangedHandler = { _, xValue, yValue in
-          self.mouseScroll.x = xValue
-          self.mouseScroll.y = yValue
+        descriptor.colorAttachments[0].texture = idTexture
+        descriptor.colorAttachments[0].loadAction = .clear
+        descriptor.colorAttachments[0].storeAction = .store
+        descriptor.depthAttachment.texture = depthTexture
+        guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: descriptor) else {
+            return
         }
+        renderEncoder.label = label
+        renderEncoder.setRenderPipelineState(pipelineState)
+        renderEncoder.setDepthStencilState(depthStencilState)
+        for model in scene.models{
+            model.render(encoder: renderEncoder, uniforms: uniforms, params: params)
+        }
+        renderEncoder.endEncoding()
     }
-#if os(macOS)
-  NSEvent.addLocalMonitorForEvents(
-    matching: [.keyUp, .keyDown]) { _ in nil }
-#endif
-  }
 }
