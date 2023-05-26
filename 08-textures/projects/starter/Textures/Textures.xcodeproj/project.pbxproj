@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210071F92A18B00300D4E118 /* TextureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210071F82A18B00300D4E118 /* TextureController.swift */; };
+		210071FA2A18B00300D4E118 /* TextureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210071F82A18B00300D4E118 /* TextureController.swift */; };
+		210071FC2A1A3C9A00D4E118 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210071FB2A1A3C9A00D4E118 /* Textures.xcassets */; };
+		210071FD2A1A3C9A00D4E118 /* Textures.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210071FB2A1A3C9A00D4E118 /* Textures.xcassets */; };
 		82044E4026C8B6B5008347C1 /* lowpoly-house-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 82044E3D26C8B6B5008347C1 /* lowpoly-house-color.png */; };
 		82044E4126C8B6B5008347C1 /* lowpoly-house-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 82044E3D26C8B6B5008347C1 /* lowpoly-house-color.png */; };
 		82044E4226C8B6B5008347C1 /* lowpoly-house.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 82044E3E26C8B6B5008347C1 /* lowpoly-house.mtl */; };
@@ -52,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210071F82A18B00300D4E118 /* TextureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureController.swift; sourceTree = "<group>"; };
+		210071FB2A1A3C9A00D4E118 /* Textures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Textures.xcassets; sourceTree = "<group>"; };
 		82044E3D26C8B6B5008347C1 /* lowpoly-house-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lowpoly-house-color.png"; sourceTree = "<group>"; };
 		82044E3E26C8B6B5008347C1 /* lowpoly-house.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lowpoly-house.mtl"; sourceTree = "<group>"; };
 		82044E3F26C8B6B5008347C1 /* lowpoly-house.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lowpoly-house.obj"; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				820B880526B8E47D0070A134 /* TexturesApp.swift */,
+				210071F82A18B00300D4E118 /* TextureController.swift */,
 				820B882626B8E50F0070A134 /* Renderer.swift */,
 				820B882926B8E51B0070A134 /* Model.swift */,
 				822D02AA273652B100296BE0 /* Transform.swift */,
@@ -130,6 +137,7 @@
 				820B883226B8E53C0070A134 /* Utility */,
 				820B882226B8E4EF0070A134 /* SwiftUI Views */,
 				820B880726B8E47E0070A134 /* Assets.xcassets */,
+				210071FB2A1A3C9A00D4E118 /* Textures.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -274,6 +282,7 @@
 				8224334826CB7A9300F627C5 /* ground.png in Resources */,
 				82044E4026C8B6B5008347C1 /* lowpoly-house-color.png in Resources */,
 				8224334A26CB7A9300F627C5 /* plane.obj in Resources */,
+				210071FC2A1A3C9A00D4E118 /* Textures.xcassets in Resources */,
 				8224334F26CB7AE000F627C5 /* lowpoly-barn-color.png in Resources */,
 				820B881726B8E47E0070A134 /* Assets.xcassets in Resources */,
 				8224334626CB7A9300F627C5 /* plane.mtl in Resources */,
@@ -290,6 +299,7 @@
 				8224334926CB7A9300F627C5 /* ground.png in Resources */,
 				82044E4126C8B6B5008347C1 /* lowpoly-house-color.png in Resources */,
 				8224334B26CB7A9300F627C5 /* plane.obj in Resources */,
+				210071FD2A1A3C9A00D4E118 /* Textures.xcassets in Resources */,
 				8224335026CB7AE000F627C5 /* lowpoly-barn-color.png in Resources */,
 				820B881826B8E47E0070A134 /* Assets.xcassets in Resources */,
 				8224334726CB7A9300F627C5 /* plane.mtl in Resources */,
@@ -356,6 +366,7 @@
 				820B881526B8E47E0070A134 /* ContentView.swift in Sources */,
 				82044E4726C8BA80008347C1 /* Options.swift in Sources */,
 				822D02AB273652B100296BE0 /* Transform.swift in Sources */,
+				210071F92A18B00300D4E118 /* TextureController.swift in Sources */,
 				820B881326B8E47E0070A134 /* TexturesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +386,7 @@
 				820B881626B8E47E0070A134 /* ContentView.swift in Sources */,
 				82044E4826C8BA80008347C1 /* Options.swift in Sources */,
 				822D02AC273652B100296BE0 /* Transform.swift in Sources */,
+				210071FA2A18B00300D4E118 /* TextureController.swift in Sources */,
 				820B881426B8E47E0070A134 /* TexturesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
